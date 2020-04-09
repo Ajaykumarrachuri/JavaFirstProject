@@ -1,38 +1,41 @@
 package com.sapient.week1;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+    private CheckEven app;
+    
+    @Before
+    public void setup() {
+        app = new CheckEven();
+    }
+    
+    
+    @Test
+    public void testWordCountString() {
+        Boolean count = app.check(2);
+        assertTrue(count == true);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void testWordCountEmpty() {
+        Boolean count = app.check(3);
+        assertTrue(count == false);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void testWordCountNull() {
+        Boolean count = app.check(4);
+        assertTrue(count == true);
     }
+
+    @Test
+    public void testWordCountMore() {
+        Boolean count = app.check(5);
+        assertTrue(count == false);
+    }
+
 }
